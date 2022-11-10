@@ -65,7 +65,6 @@ class _ShowPageState extends State<ShowPage> {
         if (passingData[0].contains('(')) {
           passingData[0] =
               passingData[0].substring(0, passingData[0].indexOf('('));
-          debugPrint('!@@!!!' + passingData[0].toString());
         }
 
         if (!MvLst.contains(passingData[0])) {
@@ -78,10 +77,7 @@ class _ShowPageState extends State<ShowPage> {
 
     NotificationService.init();
     // listenNotification();
-    debugPrint('mvlstt:' + MvLstT.toString());
     _length = MvLst.length;
-    debugPrint(MvLst.toString());
-    debugPrint('_length:' + _length.toString());
 
     for (int i = 0; i < _length; i++) {
       String str = MvLst[i];
@@ -99,7 +95,6 @@ class _ShowPageState extends State<ShowPage> {
       prov.getData().then((value) {
         setState(() {
           _clear++;
-          debugPrint('clear :' + _clear.toString());
         });
         for (final val in value) {
           if (val.movieNm.toString() != '') {
