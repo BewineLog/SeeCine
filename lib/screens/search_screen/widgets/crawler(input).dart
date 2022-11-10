@@ -33,20 +33,12 @@ class Crawler_input {
       var b = a
           .replaceRange(a.lastIndexOf(');'), a.lastIndexOf(');') + 2, "")
           .replaceAll("\'", "\"");
-      // debugPrint("b:" + b.toString());
 
       var decoded = ExternalData.fromJson(json.decode(b));
       MvTime tmp = MvTime();
       for (var i in decoded.items) {
-        // debugPrint('!@#!@#!@#!@#!@#' + i.html.toString());
         var body = parse(i.html);
         var body2 = parse(i.date);
-        // debugPrint(body.text.toString());
-
-        // debugPrint(
-        //     "crawler i.date = " + body2.documentElement!.text.toString());
-
-        // var data = body.documentElement!.text.split('관람가');
 
         if (int.parse(todayDt.split('-')[2]) + 4 <
                 int.parse(
@@ -58,11 +50,8 @@ class Crawler_input {
         } else if (!totDt.contains(body2.documentElement!.text.toString()) &&
             totDt.length <= 4 &&
             dt_check == 0) {
-          debugPrint('totDt input = ' + body2.documentElement!.text.toString());
           totDt.add(body2.documentElement!.text.toString());
         }
-        debugPrint("1:" + body2.documentElement!.text.toString());
-
         for (var k in i.html.split('\n')) {
           var j = parse(k).documentElement!.text.toString();
 
@@ -106,12 +95,8 @@ class Crawler_input {
             }
           }
 
-          for (var abc in tmp.Url.keys) {
-            debugPrint(abc + ':' + tmp.Url[abc].toString());
-          }
         }
       }
-      // debugPrint('dt_check = ' + dt_check.toString());
       dt_check++;
       Ldata.add(tmp);
 
