@@ -110,14 +110,11 @@ class _ShowPageState extends State<ShowPage> {
           for (var v in flst) {
             if (v.selectedDate.toString() == selectDt.toString() &&
                 !MvName.contains(v.movieNm)) {
-              debugPrint('MvName:' + v.movieNm.toString());
               MvName.add(v.movieNm);
             }
           }
-          debugPrint('before');
           totDat = _getData(MvName[0].toString());
           _selectedName = MvName[0].toString();
-          debugPrint('After');
         }
       });
     }
@@ -156,7 +153,6 @@ class _ShowPageState extends State<ShowPage> {
         }
       }
     }
-    debugPrint('error point?');
     if (notificationVal[name] == null ||
         notificationVal[name]!.isEmpty ||
         notificationVal[name]![selectDt] == null) {
@@ -170,7 +166,6 @@ class _ShowPageState extends State<ShowPage> {
     // _notificationVal[name] = List.generate(t.length, (index) => 0);
     // _notificationId[name] = List.generate(t.length, (index) => 0);
 
-    debugPrint('123:' + notificationId[MvName[0]].toString());
 
     if (t.length > 1) {
       t.sort((a, b) =>
@@ -179,7 +174,6 @@ class _ShowPageState extends State<ShowPage> {
               : (a.trim().split(' ').last.compareTo(b.trim().split(' ').last)));
     } // 시간 기준 sorting 코드
 
-    debugPrint('return t');
     return t;
   }
 
@@ -232,17 +226,10 @@ class _ShowPageState extends State<ShowPage> {
                                     : Text(totDt[index2].split('-')[2]),
                                 onPressed: () {
                                   setState(() {
-                                    debugPrint('index:' + index2.toString());
-                                    debugPrint('totDt length:' +
-                                        totDt.length.toString());
                                     _selectedTwo = index2;
-                                    debugPrint('set select dt');
                                     selectDt = totDt[index2];
-                                    debugPrint(
-                                        'selectDt:' + selectDt.toString());
                                     totDat = _getData(
                                         MvName[_selectedOne].toString());
-                                    debugPrint('after totDat');
                                   });
                                 },
                               );
