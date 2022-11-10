@@ -63,23 +63,16 @@ Future<ReturnData> fetchData() async {
 
     for (var name in parse(nvr_response.body)
         .getElementsByClassName("fn_tit txt_ellip")) {
-      debugPrint(name.text.toString());
       nameL.add(name.text.toString());
     }
 
     for (var grade_val
         in parse(nvr_response.body).getElementsByClassName("rate")) {
-      debugPrint(grade_val.text.toString());
-      debugPrint('-----');
       gradeL.add(grade_val.text.toString());
     }
-    debugPrint(nameL.length.toString() + ' ' + gradeL.length.toString());
-    debugPrint('!@!@!@!@!@!@');
     for (var i = 0; i < nameL.length; i++) {
       var tName = nameL[i].toString().replaceAll(' ', '');
-      debugPrint('tName:' + tName);
       Rank.grade[nameL[i].toString()] = gradeL[i].toString();
-      debugPrint(nameL[i].toString() + ':' + Rank.grade[nameL[i].toString()]);
     }
   } catch (err) {
     throw Exception('$err');
