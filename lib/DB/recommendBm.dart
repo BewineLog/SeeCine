@@ -29,8 +29,6 @@ class recommend_bm {
     await db.insert('recommend', rec.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
     recID += 1;
-    debugPrint('insert Data recID:' + recID.toString());
-    debugPrint('insertData:' + rec.name + rec.mvcount);
   }
 
   Future<void> updateData(Recommend rec) async {
